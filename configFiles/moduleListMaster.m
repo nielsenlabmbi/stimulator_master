@@ -33,6 +33,7 @@ Plist{end+1} = {'PM' 'V4 Pacman'         		'configPstate_Pacman'   			''};
 Plist{end+1} = {'GL' 'Glass'             		'configPstate_Glass'   				''};
 Plist{end+1} = {'CK' 'Checkerboard'      		'configPstate_CheckerBoard'   		''};
 Plist{end+1} = {'CG' 'Counter Grating'      	'configPstate_CounterBar'   		''};
+Plist{end+1} = {'SG' 'Simple Grating'      	    'configPstate_SimpleGrating'   		''};
 Plist{end+1} = {'WG' 'Warped Grating'    		'configPstate_WarpedGrating'   		''};
 Plist{end+1} = {'WC' 'Warperd Checkerb'         'configPstate_WarpedChecker'   		''};
 Plist{end+1} = {'PW' 'Piecewise' 				'configPstate_Piecewise' 			''};

@@ -11,6 +11,7 @@ function getSetup
 %acqIP: acquisition IP in a 3 computer case
 %MstateHistoryFile: path to mstate history file
 %ExperimentMasterFile: path to database file
+%TCPforParams: use params file or sent params string via tcp/ip
 %useXXX: peripherals
 %
 %do not change the names of these fields!!!
@@ -54,6 +55,10 @@ end
 
 if isfield(setupDefault,'useMCDaq')
     setupDefault.useMCDaq=str2num(setupDefault.useMCDaq);
+end
+
+if isfield(setupDefault,'TCPforParams')
+    setupDefault.TCPforParams=str2num(setupDefault.TCPforParams);
 end
 
 if isfield(setupDefault,'useVentilator')

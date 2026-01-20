@@ -31,6 +31,16 @@ else
     % initialize setup specific Mstate values
     Mstate.monitorName=setupDefault.defaultMonitor;
     Mstate.analyzerRoot=setupDefault.analyzerRoot;
+
+    %check that z is connected if the analyzer file will be used to convey
+    %stimulus parameters
+    %this is a hack for now
+    if isfield(setupDefault,'TCPforParams') & setupDefault.TCPforParams==0
+        if exist('/home/nielsenlab/Zdrive/EphysNew/processedSpikes','dir')==0
+            disp('Warning! Z needs to be mounted!')
+        end
+    end
+
     %Mstate.acqConnect=0;
     
     %disp(Mstate.analyzerRoot)

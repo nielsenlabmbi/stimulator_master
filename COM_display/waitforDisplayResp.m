@@ -1,6 +1,7 @@
 function comerr=waitforDisplayResp(varargin)   
 
 global DcomState 
+fprintf(2, "<1>");
 comhandle = DcomState.serialPortHandleReceiver;
 %Clear the buffer
 n = get(comhandle,'BytesAvailable');
@@ -15,6 +16,7 @@ if nargin==0
         n = get(comhandle,'BytesAvailable'); %Wait for response
     end
     comerr=0;
+    fprintf(2, "<2>");
 else
     v=zeros(1,6);
     %disp(varargin{1})
@@ -24,6 +26,7 @@ else
         v=t2-t1;
         %disp(v(6))
     end
+    fprintf(2, "<3>");
     if n==0
         comerr=1;
     else
@@ -36,3 +39,4 @@ n = get(comhandle,'BytesAvailable');
 if n > 0
     fread(comhandle,n); %clear the buffer
 end
+fprintf(2, "<4>\n");

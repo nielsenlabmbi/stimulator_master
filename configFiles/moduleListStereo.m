@@ -24,6 +24,7 @@ Plist{end+1} = {'SK' 'Kalatsky'          		'configPstate_Kalatsky_Stereo'   			'
 Plist{end+1} = {'SB' 'RC Bars'           		'configPstate_RCBars_Stereo'   			''};
 Plist{end+1} = {'CK' 'Checkerboard'      		'configPstate_CheckerBoard'   		''};
 Plist{end+1} = {'MS' 'M sequence'               'configPstate_MSeq'                 ''};
+Plist{end+1} = {'CG' 'ColorGrating'            'configPstate_PerGratingColor_Stereo'        ''};
 
 
 Mlist{1}  = {'MG' 'BW Grating'};

@@ -15,10 +15,10 @@ if ~isempty(strfind(setupDefault.setupID,'EP')) && Mstate.acqConnect(Mstate.acqI
 end
 
 if ~isempty(strfind(setupDefault.setupID,'NP')) && Mstate.acqConnect(Mstate.acqIdxNP)==1
-    %stopIntanAcq; %just in case it's still running
-    %pause(5);
-    %updateAcqName %Send expt info to acquisition
-    %startIntanAcq
+    stopSpikeglxAcq; %just in case it's still running
+    pause(5);
+    updateAcqName %Send expt info to acquisition
+    startSpikeglxAcq
 end
 
 if ~isempty(strfind(setupDefault.setupID,'ISI')) && Mstate.acqConnect(Mstate.acqIdxIsi)==1

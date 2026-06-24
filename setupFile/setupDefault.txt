@@ -1,0 +1,26 @@
+setupID: EP
+setupID: NP
+slaveIP: 172.30.11.142
+intanID: 172.30.11.143
+SpikeGlxID: 172.30.11.129
+defaultMonitor: Predator
+alternativeMonitor: Viewsonic
+alternativeMonitor: Acer 
+alternativeMonitor: LG
+alternativeMonitor: Viewpixx
+alternativeMonitor: Linear
+monitorList: monitorListNielsenlab
+analyzerRoot: /home/nielsenlab/VStimFiles/AnalyzerFiles
+analyzerRoot: /home/nielsenlab/Zdrive/EphysNew/Analyzer
+MstateHistoryFile: /home/nielsenlab/stimulator_history/MstateHistory.mat
+ExperimentMasterFile: /home/nielsenlab/stimulator_history/experimentMasterList.mat
+loopParamRoot: /home/nielsenlab/params_looper
+acqDataRoot: /home/nielsenlab/data
+isiOnlineRoot: C:\isidata\processed data
+useMCDaq: 1
+useVentilator: 1
+useShutter: 0
+useOpto: 0
+useFuncGen: 0
+useZaber: 0
+TCPforParams: 0

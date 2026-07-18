@@ -22,11 +22,16 @@ if ~isempty(strfind(setupDefault.setupID,'NP')) && Mstate.acqConnect(Mstate.acqI
 end
 
 if ~isempty(strfind(setupDefault.setupID,'ISI')) && Mstate.acqConnect(Mstate.acqIdxIsi)==1
+    disp('Getting ISI camera ready')
     updateAcqName %Send expt info to acquisition
     setIsiDur %send info to determine number of frames
+    pause(2)
+    IsiState.doneData=0;
+    disp('Run dummy trial')
     startIsiAcqTrial0 %dummy trial 0 - start camera
     startDummyTrial %send to slave - generates TTL pulse
     while IsiState.doneData~=1
         pause(1);
     end
+    disp('ISI camera ready')
 end

@@ -4,11 +4,9 @@ function update_isiname
 
 global Mstate IsiComState
 
-msg = 'M';
+msg = 'F';
 
-msg = sprintf('%s;%s=%s',msg,'anim',Mstate.anim);
-msg = sprintf('%s;%s=%s',msg,'unit',Mstate.unit);
-msg = sprintf('%s;%s=%s',msg,'expt',Mstate.expt);
+msg = sprintf('%s;%s;%s;%s',msg,Mstate.anim,Mstate.unit,Mstate.expt);
 
 msg = [msg ';~'];  %add the "Terminator"
 

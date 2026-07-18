@@ -45,10 +45,7 @@ if Mstate.running && trialno<=nt
         waitforDisplayResp;
     end
     
-    %run any trial-dependent code for the acquisition
-    if AppHdl.main.BStimDAQ.Value==1
-        startAcqTrial;
-    end
+    
     
     %%%Organization of commands is important for timing in this part of loop
     tic
@@ -67,6 +64,12 @@ if Mstate.running && trialno<=nt
 %     end 
     buildSendTime = toc;
     fprintf('\t'); disp(['Computation/communication time: ' num2str(buildSendTime) 's.']) 
+
+    %run any trial-dependent code for the acquisition
+    if AppHdl.main.BStimDAQ.Value==1
+        startAcqTrial;
+    end
+
     fprintf('\t'); disp('Playing stimulus...');
     startStimulus(mod)      %Tell Display to show its buffered images. 
     %waitforDisplayResp
@@ -75,9 +78,9 @@ if Mstate.running && trialno<=nt
     trialno = trialno+1;
 
     %run any trial-dependent code for the acquisition
-    %if AppHdl.main.BStimDAQ.Value==1
-    %    stopAcqTrial;
-    %end
+    if AppHdl.main.BStimDAQ.Value==1
+        stopAcqTrial;
+    end
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 else

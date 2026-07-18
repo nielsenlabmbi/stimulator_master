@@ -1,8 +1,9 @@
 function stopIsiAcqTrial
 
-global  IsiComState
+global IsiState
 
-msg = 'U';
-msg = [msg ';~'];  %add the "Terminator"
 
-fwrite(IsiComState.serialPortHandle,msg);
+%keep checking for status of ISIstate
+while IsiState.doneData~=1
+    pause(1);
+end

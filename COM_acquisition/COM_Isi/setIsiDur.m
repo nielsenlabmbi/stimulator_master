@@ -1,4 +1,4 @@
-function startIsiAcq
+function setIsiDur
 
 %send necessary parameters to isi setup
 

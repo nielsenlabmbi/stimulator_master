@@ -4,7 +4,7 @@ function configIsiCom
 
 global IsiComState 
 
-isiIP='172.30.11.131';
+isiIP='172.30.11.187';
 
 
 % close all open udp port objects on the same port and remove
@@ -26,16 +26,18 @@ set(IsiComState.serialPortHandle, 'Datagramterminatemode', 'off')
 %Establish serial port event callback criterion  
 IsiComState.serialPortHandle.BytesAvailableFcnMode = 'Terminator';
 IsiComState.serialPortHandle.Terminator = '~'; %Magic number to identify request from Stimulus ('c' as a string)
-%IsiComState.serialPortHandle.bytesavailablefcn = @Isicb;  
+IsiComState.serialPortHandle.bytesavailablefcn = @Isicb;  
 
 % open and check status 
 fopen(IsiComState.serialPortHandle);
-stat=get(IsiComState.serialPortHandle, 'Status');
+stat=get(IsiComState.serialPortHandle, 'Status')
 if ~strcmp(stat, 'open')
     disp([' Isi camera: trouble opening port; cannot proceed']);
     IsiComState.serialPortHandle=[];
     out=1;
     return;
 end
+
+IsiComState.serialPortHandleReceiver = IsiComState.serialPortHandle;
 
 disp('ISI camera connected');

@@ -1,11 +1,10 @@
-function startDummyTrial
-
-%need to generate a TTL pulse to run a dummy trial for the ISI acquisition
-%to avoid dropped frames later
+function closeDisplay
 
 global  DcomState StimCom
 
-msg = 'TTL;;;~';  %this way it will be parsed correctly
+%This updates the gamma table and screen size at the display.
+
+msg = 'C;~';
 
 %depending on how the communication between the machines is handled, using
 %different commands (backwards compatibility)
@@ -15,4 +14,5 @@ elseif ~isempty(StimCom)
     write(StimCom,msg);
 end
 
-disp('Sending TTL pulse');
+%also delete StimCom so that we can reinitialize it again
+delete(StimCom)

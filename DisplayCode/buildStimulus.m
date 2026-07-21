@@ -2,7 +2,7 @@ function buildStimulus(cond,trial)
 
 %Sends stimulus information for the current trial to the slave
 
-global DcomState looperInfo Mstate Pstate Lstate AppHdl
+global DcomState StimCom looperInfo Mstate Pstate Lstate AppHdl
 
 bflag = strcmp(looperInfo.conds{cond}.symbol{1},'blank');
 refflag = strcmp(looperInfo.conds{cond}.symbol{1},'refstim');
@@ -151,7 +151,11 @@ end
 
 msg = [msg ';~'];  %add the "Terminator"
 
-fwrite(DcomState.serialPortHandle,msg);
+if ~isempty(DcomState) %old tcp protocol
+    fwrite(DcomState.serialPortHandle,msg);
+elseif ~isempty(StimCom)
+    write(StimCom,msg);
+end
 
 
 

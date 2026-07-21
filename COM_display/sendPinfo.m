@@ -1,7 +1,7 @@
 function sendPinfo(mod)
 %mod is the 2 letter code for the module
 
-global Pstate DcomState
+global Pstate DcomState StimCom
 
 %mod = getmoduleID;
 
@@ -22,5 +22,12 @@ end
 msg = [msg ';~'];  %add the "Terminator"
 
 
-fwrite(DcomState.serialPortHandle,msg);
+%depending on how the communication between the machines is handled, using
+%different commands (backwards compatibility)
+if ~isempty(DcomState) %old tcp protocol
+    fwrite(DcomState.serialPortHandle,msg);
+elseif ~isempty(StimCom)
+    write(StimCom,msg);
+end
+
 disp('Sending param values.');

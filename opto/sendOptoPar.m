@@ -1,6 +1,6 @@
 function sendOptoPar
 
-global DcomState optoInfo
+global DcomState StimCom optoInfo
 
 optoPar=fieldnames(optoInfo);
 
@@ -12,5 +12,10 @@ end
 
 msg = [msg ';~'];  %add the "Terminator"
 disp(msg)
-fwrite(DcomState.serialPortHandle,msg);
+
+if ~isempty(DcomState) %old tcp protocol
+    fwrite(DcomState.serialPortHandle,msg);
+elseif ~isempty(StimCom)
+    write(StimCom,msg);
+end
     

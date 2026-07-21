@@ -1,9 +1,12 @@
 function startStimulus(modID)
 
-global DcomState
+global DcomState StimCom
 
 
 msg = ['G;' modID ';~'];
 
-fwrite(DcomState.serialPortHandle,msg);
-
+if ~isempty(DcomState) %old tcp protocol
+    fwrite(DcomState.serialPortHandle,msg);
+elseif ~isempty(StimCom)
+    write(StimCom,msg);
+end

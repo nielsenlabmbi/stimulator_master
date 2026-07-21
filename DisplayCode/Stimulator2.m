@@ -7,7 +7,7 @@ getSetup;
 stereoFlag=0;
 
 %host-host communication
-configDisplayCom_tcp    %stimulus computer
+configDisplayCom_tcpNew    %stimulus computer
 %configAcqCom %acquisition machine
 
 %Initialize stimulus parameter structures

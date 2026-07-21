@@ -1,42 +1,59 @@
-function comerr=waitforDisplayResp(varargin)   
+function comerr=waitforDisplayResp(varargin)
 
-global DcomState 
-fprintf(2, "<1>");
-comhandle = DcomState.serialPortHandleReceiver;
-%Clear the buffer
-n = get(comhandle,'BytesAvailable');
-if n > 0
-    fread(comhandle,n); %clear the buffer
-end
-%Wait...
-n = 0;  %Need this, or it won't enter next loop (if there were leftover bits)!!!!
-t1=clock;
-if nargin==0
-    while n == 0 
-        n = get(comhandle,'BytesAvailable'); %Wait for response
+global DcomState StimCom
+
+
+if ~isempty(DcomState) %old protocol
+    fprintf(2, "<1>");
+    comhandle = DcomState.serialPortHandleReceiver;
+    %Clear the buffer
+    n = get(comhandle,'BytesAvailable');
+    if n > 0
+        fread(comhandle,n); %clear the buffer
     end
-    comerr=0;
-    fprintf(2, "<2>");
-else
-    v=zeros(1,6);
-    %disp(varargin{1})
-    while n == 0 && v(6)<varargin{1}
-        n = get(comhandle,'BytesAvailable'); %Wait for response
-        t2=clock;
-        v=t2-t1;
-        %disp(v(6))
-    end
-    fprintf(2, "<3>");
-    if n==0
-        comerr=1;
-    else
+    %Wait...
+    n = 0;  %Need this, or it won't enter next loop (if there were leftover bits)!!!!
+    t1=clock;
+    if nargin==0
+        while n == 0
+            n = get(comhandle,'BytesAvailable'); %Wait for response
+        end
         comerr=0;
+        fprintf(2, "<2>");
+    else %this is for debugging purposes only
+        v=zeros(1,6);
+        %disp(varargin{1})
+        while n == 0 && v(6)<varargin{1}
+            n = get(comhandle,'BytesAvailable'); %Wait for response
+            t2=clock;
+            v=t2-t1;
+            %disp(v(6))
+        end
+        fprintf(2, "<3>");
+        if n==0
+            comerr=1;
+        else
+            comerr=0;
+        end
     end
-end
-pause(.5) %Hack to finish the read
+    pause(.5) %Hack to finish the read
 
-n = get(comhandle,'BytesAvailable');
-if n > 0
-    fread(comhandle,n); %clear the buffer
+    n = get(comhandle,'BytesAvailable');
+    if n > 0
+        fread(comhandle,n); %clear the buffer
+    end
+    fprintf(2, "<4>\n");
+
+elseif ~isempty(StimCom)
+    fprintf(2, "<1>");
+    %Wait...
+    n = 0;  %Need this, or it won't enter next loop 
+    while n == 0
+        n = StimCom.NumBytesAvailable; %Wait for response
+        pause(.1) %wait a bit before next read
+    end
+    fprintf(2, "<2>")
+    read(StimCom, StimCom.NumBytesAvailable, "string");
+    fprintf(2, "<4>\n");
+
 end
-fprintf(2, "<4>\n");

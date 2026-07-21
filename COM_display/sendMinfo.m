@@ -9,7 +9,7 @@ function sendMinfo
 %... Stimulus also needs the anim_unit_expt to save the random ensemble
 %info, such as with 'flash grater'.
 
-global Mstate DcomState
+global Mstate DcomState StimCom
 
 msg = 'M';
 
@@ -21,5 +21,11 @@ msg = sprintf('%s;%s=%d',msg,'running',Mstate.running);
 
 msg = [msg ';~'];  %add the "Terminator"
 
-fwrite(DcomState.serialPortHandle,msg);
+%depending on how the communication between the machines is handled, using
+%different commands (backwards compatibility)
+if ~isempty(DcomState) %old tcp protocol
+    fwrite(DcomState.serialPortHandle,msg);
+elseif ~isempty(StimCom)
+    write(StimCom,msg);
+end
 disp('Sending MainWindow values.');

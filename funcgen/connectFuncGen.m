@@ -2,11 +2,15 @@ function connectFuncGen(status)
 
 %connect or disconnect function generator
 
-global DcomState
+global DcomState StimCom
 
 msg=['FG;' num2str(status) ';~'];
 
-fwrite(DcomState.serialPortHandle,msg);
-%disp('Connecting func gen');
+if ~isempty(DcomState) %old tcp protocol
+    fwrite(DcomState.serialPortHandle,msg);
+elseif ~isempty(StimCom)
+    write(StimCom,msg);
+end
+disp('Connecting func gen');
 
     

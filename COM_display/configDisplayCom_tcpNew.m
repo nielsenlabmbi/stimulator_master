@@ -10,7 +10,7 @@ configureTerminator(StimCom, 126); %126 = ~
 configureCallback(StimCom, "terminator", @DisplaycbNew);
 
 
-disp('Opening TCP gateway. Start Stimulator on the slave.');
+disp('Opening TCP gateway. Run Stimulator2 on the Stimulus computer.');
 
 % check status 
 fprintf('Waiting for client connection...\n');

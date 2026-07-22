@@ -2,7 +2,7 @@ function setIsiDur
 
 %send necessary parameters to isi setup
 
-global  IsiComState
+global  IsiCom 
 
 msg = 'D';
 
@@ -15,5 +15,5 @@ msg = sprintf('%s;%.4f',msg,trialdur);
 
 msg = [msg ';~'];  %add the "Terminator"
 
-fwrite(IsiComState.serialPortHandle,msg);
+write(IsiCom,msg);
 %disp('Sending MainWindow values.');

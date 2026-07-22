@@ -1,12 +1,8 @@
 function stopIsiAcqTrial
 
-global IsiState IsiComState
+global IsiCom 
 
 %send stop, just in case the camera didn't stop on its own
 msg = 'S;~';  
-fwrite(IsiComState.serialPortHandle,msg);
+write(IsiCom,msg);
 
-%keep checking for status of ISIstate
-%while IsiState.doneData~=1
-%    pause(.1);
-%end

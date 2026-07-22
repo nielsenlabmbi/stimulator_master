@@ -1,6 +1,6 @@
 function startAcq %executed before first trial
 
-global setupDefault Mstate IsiState
+global setupDefault Mstate 
 
 if ~isempty(strfind(setupDefault.setupID,'2P')) && Mstate.acqConnect(Mstate.acqIdx2P)==1
     updateAcqName   %Send expt info to acquisition
@@ -26,12 +26,9 @@ if ~isempty(strfind(setupDefault.setupID,'ISI')) && Mstate.acqConnect(Mstate.acq
     updateAcqName %Send expt info to acquisition
     setIsiDur %send info to determine number of frames
     pause(2)
-    IsiState.doneData=0;
     disp('Run dummy trial')
     startIsiAcqTrial0 %dummy trial 0 - start camera
     startDummyTrial %send to slave - generates TTL pulse
-    while IsiState.doneData~=1
-        pause(1);
-    end
+    waitforIsiResp
     disp('ISI camera ready')
 end

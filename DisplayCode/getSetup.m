@@ -50,7 +50,6 @@ for i=1:length(c{1})
     end
     
 end
-
 %parameter conversion where necessary
 
 if isfield(setupDefault,'useMCDaq')
@@ -78,7 +77,7 @@ if isfield(setupDefault,'useFuncGen')
 end
 
 if isfield(setupDefault,'useZaber')
-    setupDefault.useFuncGen=str2num(setupDefault.useZaber);
+    setupDefault.useZaber=str2num(setupDefault.useZaber);
 end
 
 fclose(fId);

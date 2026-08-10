@@ -12,11 +12,3 @@ if setupDefault.useShutter
     shutterInfo.waitTime=100;   
 end
 
-if setupDefault.useOpto
-    global optoInfo
-    
-    optoInfo.Ch=3;
-    optoInfo.pulseDur=100;
-    optoInfo.pulseFreq=1;
-    optoInfo.trainDur=2;
-end

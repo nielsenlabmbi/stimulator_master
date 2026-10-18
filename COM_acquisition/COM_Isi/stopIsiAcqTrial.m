@@ -6,3 +6,4 @@ global IsiCom
 msg = 'S;~';  
 write(IsiCom,msg);
 
+waitforIsiResp;

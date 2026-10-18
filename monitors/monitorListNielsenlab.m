@@ -63,9 +63,9 @@ switch monitorID
         monitorPar.ypixels = 1440;
         %monitorPar.LUT='/home/nielsenlab/stimulator_slave/calibration/Predator/luminance.mat';
          
-    case {'HP','HP'} %large LG screen
+    case {'HP','HP1'} %HP mono config
 
-        monitorPar.ID='HP';
+        monitorPar.ID='HP1';
         monitorPar.Name='HP';
         monitorPar.screenXcm = 52.5;
         monitorPar.screenYcm = 29.5;

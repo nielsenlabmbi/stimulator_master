@@ -72,5 +72,15 @@ switch monitorID
         monitorPar.xpixels = 1920;
         monitorPar.ypixels = 1080;
         %monitorPar.LUT='/home/nielsenlab/stimulator_slave/calibration/Predator/luminance.mat';
+      
+    case {'ViewStereo','VSS'} %120 hz viewsonic in stereo mode
         
+        monitorPar.ID='VSS';
+        monitorPar.Name='ViewStereo';
+        monitorPar.screenXcm = 54.5*2;
+        monitorPar.screenYcm = 30;
+        monitorPar.xpixels = 3840;
+        monitorPar.ypixels = 1080;
+        %monitorPar.LUT='/home/nielsenlab/stimulator_slave/calibration/ViewSonic071224/luminance.mat';
+                
 end

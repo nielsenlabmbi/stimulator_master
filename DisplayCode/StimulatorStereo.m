@@ -7,7 +7,7 @@ stereoFlag=1;
 getSetup;
 
 %host-host communication
-configDisplayCom_tcp    %stimulus computer
+configDisplayCom_tcpNew    %stimulus computer
 %configAcqCom %acquisition machine
 
 %Initialize stimulus parameter structures
@@ -30,7 +30,7 @@ AppHdl.params = paramSelectNew;
 AppHdl.manual = manualMapperNew;
 %movegui(hmm,[500 1300])
 
-AppHdl.refstim = ReferenceStim;
+%AppHdl.refstim = ReferenceStim;
 
 %AppHdl.ga = GaGen;
 

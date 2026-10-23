@@ -80,6 +80,10 @@ if isfield(setupDefault,'useZaber')
     setupDefault.useZaber=str2num(setupDefault.useZaber);
 end
 
+if isfield(setupDefault,'useRefStim')
+    setupDefault.useRefStim=str2num(setupDefault.useRefStim);
+end
+
 fclose(fId);
 
 
